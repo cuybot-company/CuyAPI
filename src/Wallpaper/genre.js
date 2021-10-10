@@ -5,7 +5,7 @@ const WallpaperArray = fs.readdirSync(path.resolve(__dirname + "/../../Assets/Im
 module.exports = async(req, res)=>{
     const { params } = req
     const chosenGenre = params.genre
-    if(!fs.existsSync(path.resolve(__dirname + `/../../Assets/images/WallpaperCompressed/${chosenGenre}`))){
+    if(!fs.existsSync(path.resolve(__dirname + `/../../Assets/Images/WallpaperCompressed/${chosenGenre}`))){
         res.status= 404
         return res.send({
             Status: 404,
@@ -13,7 +13,7 @@ module.exports = async(req, res)=>{
             Genres: WallpaperArray
         })
     }
-    const Wallpapers = fs.readdirSync(path.resolve(__dirname + `/../../Assets/images/WallpaperCompressed/${chosenGenre}`))
+    const Wallpapers = fs.readdirSync(path.resolve(__dirname + `/../../Assets/Images/WallpaperCompressed/${chosenGenre}`))
     res.status = 200
     return res.send({
         Status: 200,

@@ -2,6 +2,11 @@ const compress_images = require("compress-images")
 const fs = require("fs")
 const path = require("path")
 module.exports = async()=> {
+    if(!fs.existsSync(path.resolve(__dirname + `/../Assets/Images/WallpaperCompressed`))){
+        fs.mkdir(path.resolve(__dirname + `/../Assets/Images/WallpaperCompressed`))
+    }
+
+
     var Finished = 0
     var NotConverted = 0
     var Failed = 0

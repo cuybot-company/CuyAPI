@@ -10,7 +10,7 @@ require("dotenv").config();
 const app = new express()
 const router = require("./src/router")
 const compress = require("./utils/wallpapercompression.js")
-
+compress()
 app.use(express.json())
 app.use(morgan("dev"))
 app.use(compression())
@@ -30,5 +30,5 @@ app.all("/", (req, res) => {
 const port = process.env.TOKEN || 3000
 app.listen(port, () => {
   console.log(`Listening on port ${port}`)
-  compress()
+  
 })
