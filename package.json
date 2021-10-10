@@ -4,5 +4,30 @@
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "morgan": "^1.10.0"
-  }
+  },
+  "name": "cuyapi",
+  "version": "0.0.1",
+  "description": "API for Cuy Discord Bot",
+  "main": "index.js",
+  "scripts": {
+    "test": "nodemon"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cuybot-company/CuyAPI.git"
+  },
+  "keywords": [
+    "express",
+    "expressjs",
+    "nodejs",
+    "node",
+    "javascript",
+    "API"
+  ],
+  "author": "Christian Harjuno (SorataBaka)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cuybot-company/CuyAPI/issues"
+  },
+  "homepage": "https://github.com/cuybot-company/CuyAPI#readme"
 }

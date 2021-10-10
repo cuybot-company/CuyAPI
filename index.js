@@ -3,10 +3,10 @@ const morgan = require("morgan");
 const compression = require("compression")
 require("dotenv").config();
 
-const router = require("./src/router.js")
-
 
 const app = new express()
+const router = require("./src/router")
+
 
 app.use(express.json())
 app.use(morgan("dev"))
@@ -23,6 +23,8 @@ app.all("/", (req, res) => {
 })
 
 
-app.listen(3000, () => {
-  console.log()
+
+const port = process.env.TOKEN || 3000
+app.listen(port, () => {
+  console.log(`Listening on port ${port}`)
 })
