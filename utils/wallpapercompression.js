@@ -2,7 +2,9 @@ const compress_images = require("compress-images")
 const fs = require("fs")
 const path = require("path")
 module.exports = async()=> {
-
+    var Finished = 0
+    var NotConverted = 0
+    var Failed = 0
     const compress = async(pathFromFile, pathToFile) => {
         await compress_images(pathFromFile, pathToFile, { compress_force: false, statistic: true, autoupdate: true }, false,
         { jpg: { engine: "mozjpeg", command: ["-quality", "60"] } },
@@ -15,6 +17,12 @@ module.exports = async()=> {
             console.log(completed);
             console.log(statistic);
             console.log("-------------");
+            if(completed){
+                Finished = Finished + 1
+            }
+            if(error){
+                Failed = Failed + 1
+            }
         }
         );
     }
@@ -23,9 +31,17 @@ module.exports = async()=> {
     for(const genre of genreArray){
         const imagegenreArray = fs.readdirSync(path.resolve(__dirname + `/../Assets/Images/Wallpaper/${genre}`))
         for(const image of imagegenreArray){
-            const imageFromPath = path.resolve(__dirname+ `/../Assets/Images/Wallpaper/${genre}/${image}`)
-            const imageToPath = path.resolve(__dirname+ `/../Assets/Images/WallpaperCompressed/${genre}/${image}`)
-            await compress(imageFromPath, imageToPath)
+            const imageFromPath = __dirname+ `/../Assets/Images/Wallpaper/${genre}/${image}`
+            const imageToPath = __dirname+ `/../Assets/Images/WallpaperCompressed/${genre}/`
+            if(!fs.existsSync(path.resolve(__dirname + `/../Assets/Images/WallpaperCompressed/${genre}/${image}`))){
+                await compress(imageFromPath, imageToPath)
+            }else{
+                NotConverted = NotConverted + 1
+            }
+            
         }
     }
+    console.log("Finished: ", Finished)
+    console.log("NotConverted: ", NotConverted)
+    console.log("Failed:", Failed)
 }
