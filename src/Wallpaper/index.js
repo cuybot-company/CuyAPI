@@ -1,8 +1,7 @@
 const fs = require("fs")
 const path = require("path")
-const WallpaperArray = fs.readdirSync(path.resolve(__dirname + "/../../Assets/Images/WallpaperBuild"))
-console.log(WallpaperArray)
 module.exports = async (req, res)=> {
+  const WallpaperArray = fs.readdirSync(path.resolve(__dirname + "/../../Assets/Images/WallpaperBuild"))
   if(req.query.generate?.toLowerCase() == "true" && !req.query.genre){
     const genrePick = Math.floor(Math.random() * (WallpaperArray.length - 1))
     const genre = WallpaperArray[genrePick]

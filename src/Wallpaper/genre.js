@@ -1,8 +1,8 @@
 
 const fs = require('fs')
 const path = require("path")
-const WallpaperArray = fs.readdirSync(path.resolve(__dirname + "/../../Assets/Images/WallpaperBuild"))
 module.exports = async(req, res)=>{
+    const WallpaperArray = fs.readdirSync(path.resolve(__dirname + "/../../Assets/Images/WallpaperBuild"))
     const { params } = req
     const chosenGenre = params.genre
     if(!fs.existsSync(path.resolve(__dirname + `/../../Assets/Images/WallpaperBuild/${chosenGenre}`))){
