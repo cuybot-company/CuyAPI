@@ -1,8 +1,6 @@
 const express = require("express");
 const morgan = require("morgan");
 const compression = require("compression")
-const path = require("path")
-const fs = require("fs")
 
 require("dotenv").config();
 
