@@ -1,8 +1,14 @@
 const express = require("express");
 const morgan = require("morgan");
 const compression = require("compression")
-
+const fs = require("fs")
+const path = require("path")
 require("dotenv").config();
+
+
+if(!fs.existsSync(path.resolve(__dirname + "/Assets/Images/WallpaperBuild"))){
+  fs.mkdirSync("./Assets/Images/WallpaperBuild")
+}
 
 
 const app = new express()
@@ -22,7 +28,6 @@ app.all("/", (req, res) => {
     Message: "Welcome to the CuyAPI"
   })
 })
-
 
 
 const port = process.env.PORT || 3000

@@ -2,8 +2,8 @@ const compress_images = require("compress-images")
 const fs = require("fs")
 const path = require("path")
 module.exports = async()=> {
-    if(!fs.existsSync(path.resolve(__dirname + `/../Assets/Images/WallpaperCompressed`))){
-        fs.mkdir(path.resolve(__dirname + `/../Assets/Images/WallpaperCompressed`))
+    if(!fs.existsSync(path.resolve(__dirname + `/../Assets/Images/WallpaperBuild`))){
+        fs.mkdir(path.resolve(__dirname + `/../Assets/Images/WallpaperBuild`))
     }
 
 
@@ -37,8 +37,8 @@ module.exports = async()=> {
         const imagegenreArray = fs.readdirSync(path.resolve(__dirname + `/../Assets/Images/Wallpaper/${genre}`))
         for(const image of imagegenreArray){
             const imageFromPath = __dirname+ `/../Assets/Images/Wallpaper/${genre}/${image}`
-            const imageToPath = __dirname+ `/../Assets/Images/WallpaperCompressed/${genre}/`
-            if(!fs.existsSync(path.resolve(__dirname + `/../Assets/Images/WallpaperCompressed/${genre}/${image}`))){
+            const imageToPath = __dirname+ `/../Assets/Images/WallpaperBuild/${genre}/`
+            if(!fs.existsSync(path.resolve(__dirname + `/../Assets/Images/WallpaperBuild/${genre}/${image}`))){
                 await compress(imageFromPath, imageToPath)
             }else{
                 NotConverted = NotConverted + 1

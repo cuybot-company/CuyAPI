@@ -4,7 +4,7 @@ module.exports = async(req, res) => {
     const { params } = req
     const genre  = params.genre
     const image = params.image
-    const imagePath = path.resolve(__dirname + `/../../Assets/Images/WallpaperCompressed/${genre}/${image}`)
+    const imagePath = path.resolve(__dirname + `/../../Assets/Images/WallpaperBuild/${genre}/${image}`)
     if(!fs.existsSync(imagePath)){
         res.status = 404
         return res.json({
